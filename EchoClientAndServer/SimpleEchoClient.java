@@ -48,7 +48,7 @@ public class SimpleEchoClient {
             } 
             
         }   catch (IOException ex) {
-                //handle
+                ex.printStackTrace();
         }
     }
 }

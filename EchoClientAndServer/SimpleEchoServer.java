@@ -39,7 +39,7 @@ public class SimpleEchoServer {
             }
             
         } catch (IOException ex) {
-            // Handle Exceptions
+            ex.printStackTrace();
         }   
     }
 }
