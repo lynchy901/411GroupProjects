@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="MainController">
+   <children>
+      <SplitPane dividerPositions="0.40350877192982454" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button id="search" layoutX="82.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="25.0" prefWidth="68.0" text="Search" />
+                  <Button id="reset" layoutX="167.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleResetButtonAction" prefHeight="25.0" prefWidth="68.0" text="Reset" />
+                  <Button id="exit" layoutX="124.0" layoutY="465.0" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="25.0" prefWidth="68.0" text="Exit" />
+                  <Label id="welcome" alignment="CENTER" layoutX="55.0" layoutY="26.0" prefHeight="17.0" prefWidth="205.0" text="Welcome to WeatherAPI Forcaster" textAlignment="CENTER" />
+                  <Label layoutX="42.0" layoutY="122.0" prefHeight="17.0" prefWidth="48.0" text="US City" />
+                  <TextField fx:id="cityname" layoutX="116.0" layoutY="118.0" />
+                  <TextField fx:id="citylat" layoutX="116.0" layoutY="233.0" />
+                  <Label layoutX="39.0" layoutY="237.0" prefHeight="17.0" prefWidth="54.0" text="Latitude" />
+                  <Label layoutX="39.0" layoutY="282.0" text="Longitude" />
+                  <TextField fx:id="citylong" layoutX="116.0" layoutY="278.0" />
+                  <Label alignment="CENTER" layoutX="148.0" layoutY="188.0" prefHeight="17.0" prefWidth="19.0" text="or" />
+                  <Label layoutX="144.0" layoutY="82.0" text="Enter" />
+               </children>
+            </AnchorPane>
+          <AnchorPane id="weatherpane" fx:id="weatherpane" minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="570.0" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="570.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="WeatherdataController">
+   <children>
+      <Label id="cityName" fx:id="cityName" layoutX="15.0" layoutY="33.0" prefHeight="55.0" prefWidth="274.0" text="City Name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Line endX="400.0" layoutX="115.0" layoutY="100.0" startX="-100.0" />
+      <Label id="cityId" fx:id="cityId" layoutX="322.0" layoutY="33.0" prefHeight="55.0" prefWidth="128.0" text="City Id">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="122.0" prefHeight="31.0" prefWidth="113.0" text="Current Temp">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="375.0" layoutY="122.0" prefHeight="31.0" prefWidth="113.0" text="Max Temp">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="122.0" prefHeight="31.0" prefWidth="113.0" text="Min Temp" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="tempCurrent" fx:id="tempCurrent" layoutX="40.0" layoutY="167.0" prefHeight="27.0" prefWidth="62.0" text="25">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="tempMin" fx:id="tempMin" layoutX="245.0" layoutY="167.0" prefHeight="27.0" prefWidth="62.0" text="25">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="tempMax" fx:id="tempMax" layoutX="395.0" layoutY="167.0" prefHeight="27.0" prefWidth="62.0" text="25">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="300.0" prefHeight="31.0" prefWidth="113.0" text="Wind Speed">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="windSpeed" fx:id="windSpeed" layoutX="40.0" layoutY="357.0" prefHeight="27.0" prefWidth="78.0" text="123 MPH">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="300.0" prefHeight="31.0" prefWidth="113.0" text="Humidity">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="humidity" fx:id="humidity" layoutX="245.0" layoutY="357.0" prefHeight="27.0" prefWidth="62.0" text="25">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="precip" fx:id="precip" layoutX="245.0" layoutY="250.0" prefHeight="27.0" prefWidth="40.0" text="25">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="208.0" prefHeight="31.0" prefWidth="113.0" text="Precipitation %">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="windDir" fx:id="windDir" layoutX="141.0" layoutY="357.0" prefHeight="27.0" prefWidth="40.0" text="ESE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="precipType" fx:id="precipType" layoutX="20.0" layoutY="223.0" prefHeight="55.0" prefWidth="174.0" text="PrecipType">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="412.0" prefHeight="31.0" prefWidth="113.0" text="City Latitude">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="412.0" prefHeight="31.0" prefWidth="113.0" text="City Longitude">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="cityLat" fx:id="windSpeed1" layoutX="40.0" layoutY="459.0" prefHeight="27.0" prefWidth="121.0" text="42.3584">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="cityLong" fx:id="windSpeed11" layoutX="245.0" layoutY="459.0" prefHeight="27.0" prefWidth="113.0" text="-71.0598">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
