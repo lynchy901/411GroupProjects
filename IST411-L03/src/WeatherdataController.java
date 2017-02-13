@@ -64,10 +64,10 @@ public class WeatherdataController implements Initializable {
 
         map.put("q", name);
         map.put("APPID", API_KEY);
+        map.put("mode", "xml");
         
         urlString = APIRequestHelper.makeURLString("http://api.openweathermap.org/data/2.5/weather?", map);
         String results = APIRequestHelper.makeGetRequest(urlString);
-        
         
         System.out.println(results);
     }
@@ -80,11 +80,11 @@ public class WeatherdataController implements Initializable {
         map.put("lat", lat);
         map.put("lon", lng);
         map.put("APPID", API_KEY);
+        map.put("mode", "xml");
         
         urlString = APIRequestHelper.makeURLString("http://api.openweathermap.org/data/2.5/weather?", map);
         String results = APIRequestHelper.makeGetRequest(urlString);
-        
-        
+       
         System.out.println(results);
     }
     

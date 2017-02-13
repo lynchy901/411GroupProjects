@@ -50,8 +50,9 @@ public class APIRequestHelper {
 
 		String output;
 		System.out.println("Output from Server .... \n");
-                if ((output = br.readLine()) != null) {
-                    results = output;
+                
+                while ((output = br.readLine()) != null) {
+                    results += output;
                 }
 
 		conn.disconnect();
