@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.io.StringReader;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 /**
  * FXML Controller class
@@ -43,11 +50,19 @@ public class WeatherdataController implements Initializable {
     // None of the values have units, so you need to add those to the end of the string you are editing. ex: tempCurrent.setText(temp + " °F");
     // I belive the weather api uses metric units, so I made some unit conversion methods below for temp and windspeed
     
-    public double convertCelcius(double x)
+    public String convertKelvin(String x) {
+        System.out.println("converting " + x + " to F");
+        
+        double temp;
+        temp = (9/5)*(Double.parseDouble(x) - 273.15) + 32;
+        return Double.toString(temp);
+    }
+    
+    public String convertCelcius(String x)
     {
         double temp;
-        temp = (x* 9/5.0) +32;
-        return temp;
+        temp = (Double.parseDouble(x)* 9/5.0) +32;
+        return Double.toString(temp);
     }
     
     public double convertmps(double m)
@@ -68,8 +83,9 @@ public class WeatherdataController implements Initializable {
         
         urlString = APIRequestHelper.makeURLString("http://api.openweathermap.org/data/2.5/weather?", map);
         String results = APIRequestHelper.makeGetRequest(urlString);
+        updateLabels(results);
+        //System.out.println(results);
         
-        System.out.println(results);
     }
     
     public void setAPICall(String lat, String lng)
@@ -85,7 +101,73 @@ public class WeatherdataController implements Initializable {
         urlString = APIRequestHelper.makeURLString("http://api.openweathermap.org/data/2.5/weather?", map);
         String results = APIRequestHelper.makeGetRequest(urlString);
        
-        System.out.println(results);
+        //System.out.println(results);
+
+        
+    }
+    
+    public void updateLabels(String xml) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try
+        {
+            builder = factory.newDocumentBuilder();
+            Document document = builder.parse(new InputSource(new StringReader(
+                    xml)));
+           NodeList current = document.getElementsByTagName("current");
+           NodeList children = current.item(0).getChildNodes();
+           
+           for (int i = 0; i < children.getLength(); i++) {
+               
+               System.out.println(children.item(i).getNodeName());
+               if (children.item(i).getNodeName().equals("humidity")) {
+                   humidity.setText(children.item(i).getAttributes().getNamedItem("value").getNodeValue() + " %");
+               }
+               if (children.item(i).getNodeName().equals("city")) {
+                   cityId.setText(children.item(i).getAttributes().getNamedItem("id").getNodeValue());
+                   cityName.setText(children.item(i).getAttributes().getNamedItem("name").getNodeValue());
+                   Node currNode = children.item(i);
+                   if (currNode.getChildNodes().getLength() > 0) {
+                       NodeList childList = currNode.getChildNodes();
+                       for (int y = 0; y < childList.getLength(); y++) {
+//                           if (childList.item(y).getNodeName().equals("coord")) {
+//                               cityLat.setText(childList.item(y).getAttributes().getNamedItem("lat").getNodeValue();
+//                             cityLong.setText(childList.item(y).getAttributes().getNamedItem("lon").getNodeValue());
+//                           }
+                       } 
+                   }
+               }
+               if (children.item(i).getNodeName().equals("temperature")) {
+                   tempCurrent.setText(convertKelvin(children.item(i).getAttributes().getNamedItem("value").getNodeValue()) + " °F");
+                   tempMin.setText(convertKelvin(children.item(i).getAttributes().getNamedItem("min").getNodeValue()) + " °F");
+                   tempMax.setText(convertKelvin(children.item(i).getAttributes().getNamedItem("max").getNodeValue()) + " °F");
+               }
+               if (children.item(i).getNodeName().equals("precipitation")) {
+                   precip.setText(children.item(i).getAttributes().getNamedItem("mode").getNodeValue());
+               }
+               if (children.item(i).getNodeName().equals("wind")) {
+                   Node currNode = children.item(i);
+                   if (currNode.getChildNodes().getLength() > 0) {
+                       NodeList childList = currNode.getChildNodes();
+                       for (int y = 0; y < childList.getLength(); y++) {
+                           if (childList.item(y).getNodeName().equals("speed")) {
+                               windSpeed.setText(childList.item(y).getAttributes().getNamedItem("value").getNodeValue() + " mph");
+
+                           }
+                           if (childList.item(y).getNodeName().equals("direction")) {
+                               windDir.setText(childList.item(y).getAttributes().getNamedItem("value").getNodeValue());
+
+                           }
+                       }
+                   }
+               }
+           }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
     @Override
