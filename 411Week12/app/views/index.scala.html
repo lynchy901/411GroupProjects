@@ -1,0 +1,28 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(clubList: List[Club])
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to Play") {
+<h2>Club List</h2>
+    <table>
+        <thead style="font-weight: bolder">
+            <td>Club Name</td>
+            <td>Member Count</td>
+        </thead>
+        @for(club <- clubList) {
+            <tr>
+                <td>@club.getClubName</td>
+                <td>@club.getMemberCount</td>
+                <td><a href="clubs/@club.getId">View</a></td>
+            </tr>
+        }
+    </table>
+
+}

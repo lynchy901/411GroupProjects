@@ -1,0 +1,25 @@
+@(club: Club)
+
+@main("Welcome to Play") {
+  <a href="/clubs">Back</a>
+
+  <h2>Club List</h2>
+
+  <table>
+    <thead style="font-weight: bolder">
+      <td>ID</td>
+      <td>Club Name</td>
+      <td>President</td>
+      <td>Member Count</td>
+      <td>Description</td>
+    </thead>
+      <tr>
+        <td>@club.getId</td>
+        <td>@club.getClubName</td>
+        <td>@club.getPresident</td>
+        <td>@club.getMemberCount</td>
+        <td>@club.getDescription</td>
+      </tr>
+  </table>
+
+}
